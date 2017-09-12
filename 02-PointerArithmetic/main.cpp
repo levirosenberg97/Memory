@@ -78,28 +78,46 @@ void cstrReversal(char * arr, int size)
 
 	cout << "Enter Anything: ";
 	cin >> arr;
-
-
 	
 	for (int i = strlen(arr); i > 0; i--)
 	{
-		/*if (*(arr + (i - 1)) == -52 || *(arr + (i - 1)) == 0)
-		{
-			i--;
-		}
-		else
-		{*/
-			cout << *(arr + (i - 1));
-		
-		
+			cout << *(arr + (i - 1));	
 	}
 }
 
 
 int main()
 {
-	/*
+	
 	//Pointer Arithmetic
+	int a = 0;
+	int b = 1;
+	int c = 2;
+
+
+	struct
+	{
+		int a;
+		int b;
+		int c;
+	}thing;
+
+	thing.a = 2;
+	thing.b = 3;
+	thing.c = 3;
+
+	cout << thing.a << endl;
+	cout << thing.b << endl;
+	cout << thing.c << endl;
+
+	cout << *((&thing.a) + 1) << endl;
+	cout << *((&thing.b) + 1) << endl;
+	cout << *((&thing.c) + 1) << endl;
+
+	for (int i = 0; i < 3; i++)
+	{
+		cout << *((&thing.a) + 1) << endl;
+	}
 
 	//Pointer Arithmetic 2 :I Want to Die Edition
 	int * hArr = new int[2];
@@ -134,7 +152,7 @@ int main()
 
 	cout << dollars << endl;
 	cout << (int)dollars << endl;
-	*/
+	
 
 	//==CLOSED==
 	// 1. Print an Array of Floats
