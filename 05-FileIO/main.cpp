@@ -3,6 +3,8 @@
 #include<string>
 #include<cstring>
 #include<time.h>
+#include"entity.h"
+
 
 using namespace std;
 
@@ -120,17 +122,19 @@ int main()
 			return -1;
 		}
 		cout << "Who Are You?: ";
-		cin >> name;
+		getline(cin, name);
 		
+		// cin.ignore(1000, '\n');
+
 		file << endl << "Name: " << name;
 
 		cout << "How Old Are You?: ";
-		cin >> age;
+		getline(cin, age);
 
 		file << endl << "Age: " << age;
 
 		cout << "What is Your Favorite Color?: " ;
-		cin >> colo;
+		getline(cin, colo);
 
 		file << endl << "Favorite Color: " << colo;
 
@@ -151,7 +155,7 @@ int main()
 
 	if (file.fail())
 	{
-		cout << "don fucked up";
+		cout << "File Not Found";
 	}
 
 	while(getline(file, buffer))
@@ -166,6 +170,76 @@ int main()
 	}
 
 	file.close();
+
+
+	// 2. Load Entity Data
+
+	fstream entityStream;
+	entityStream.open("monsters.txt");
+
+	if (entityStream.fail())
+	{
+		cout << "COULD NOT OPEN" << endl;
+	}
+
+	int entityCount = 0;
+	Entity entities[100];
+
+	while (true)
+	{
+		string buf;
+		bool entityFound = false;
+
+		//seek to next entity
+
+		while (getline(entityStream, buf))
+		{
+			if (buf[0] == '@')
+			{
+				entityFound = true;
+				break;
+			}
+		}
+
+		// exit if no entity found
+
+		if (!entityFound)
+		{
+			break;
+		}
+
+		//load data into the array of entities
+
+		Entity& curEntity = entities[entityCount];
+
+		getline(entityStream, buf);
+		curEntity.hp = stof(buf);
+
+		getline(entityStream, buf);
+		curEntity.armor = stof(buf);
+
+		getline(entityStream, buf);
+		curEntity.strength = stof(buf);
+
+		getline(entityStream, buf);
+		curEntity.defense = stof(buf);
+
+		getline(entityStream, buf);
+		curEntity.agility = stof(buf);
+
+		getline(entityStream, buf);
+		curEntity.luck = stof(buf);
+
+		entityCount++;
+
+		//exit if no entity found
+
+		if (entityCount >= 100)
+		{
+			break;
+		}
+
+	}
 
 	while (true){}
 
