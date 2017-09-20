@@ -1,3 +1,10 @@
-
-
-LEV          7
+6
+LEV
+8
+WIL
+12
+CUN
+45
+THE
+69
+DIC

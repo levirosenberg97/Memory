@@ -1,5 +1,6 @@
 #pragma once
 
+void titleScreen();
 
 void playerInput(char random[]);
 
